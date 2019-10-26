@@ -8,8 +8,8 @@
       </figure>
       <div>
         <h2 v-text="product.title"></h2>
-        <p v-text="product.description"></p>
-        <p v-text="product.price + ' $'" class="price"></p>
+        <p v-html="product.description"></p>
+        <p>{{ product.price | formatPrice }}</p>
       </div>
     </div>
   </div>
@@ -23,11 +23,17 @@ export default {
         id: 1,
         title: "Product 1",
         description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, animi.",
-        price: 99,
+          "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+        price: 99.99,
+        // image: "./images/product-1.png"
         image: require("@/assets/images/product-1.png")
       }
     };
+  },
+  filters: {
+    formatPrice: function(price) {
+      return "$" + price;
+    }
   }
 };
 </script>
@@ -35,6 +41,7 @@ export default {
 <style lang="scss">
 .product {
   width: 25%;
+  min-width: 200px;
   text-align: left;
   figure {
     margin: 0;

@@ -10,20 +10,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      brand: "Webstore",
-      roduct: {
-        id: 1,
-        title: "Product 1",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, animi.",
-        price: 99,
-        image: 'assets/images/product-1.png'
-      }
-    };
-  }
-};
+}
 </script>
 
 <style lang="scss">
