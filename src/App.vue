@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/" v-text="brand"></router-link>
+      <router-link to="/store">Store</router-link>
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
@@ -10,7 +11,12 @@
 
 <script>
 export default {
-}
+  data() {
+    return {
+      brand: "Webstore"
+    }
+  }
+};
 </script>
 
 <style lang="scss">
