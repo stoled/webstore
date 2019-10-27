@@ -26,17 +26,17 @@
       </div>
 
       <div class="cart" v-else>
-        <input type="text" v-model="order.firstName"
+        <input type="text" v-model.trim="order.firstName"
           placeholder="First Name">
 
-        <input type="text" v-model="order.lastName"
+        <input type="text" v-model.trim="order.lastName"
           placeholder="Last Name">
         <br>
 
-        <input type="text" v-model="order.address"
+        <input type="text" v-model.trim="order.address"
         placeholder="Address">
 
-        <input type="text" v-model="order.city"
+        <input type="text" v-model.trim="order.city"
         placeholder="City">
         <br>
 
@@ -48,7 +48,7 @@
           </option>
         </select>
 
-        <input type="text" v-model="order.zip"
+        <input type="text" v-model.number="order.zip"
         placeholder="Zip / Postal Code">
         <br>
 
