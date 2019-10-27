@@ -6,9 +6,9 @@
       </button>
     </div>
 
-    <div class="product">
+    <div>
 
-      <div v-if="showProduct">
+      <div class="product" v-if="showProduct">
         <figure class="image">
           <img v-bind:src="product.image">
         </figure>
@@ -26,7 +26,20 @@
       </div>
 
       <div v-else>
-        Checkout
+        <div>
+          <p>First Name</p>
+          <input type="text" v-model="order.firstName">
+        </div>
+        <div>
+          <p>Last Name</p>
+          <input type="text" v-model="order.lastName">
+        </div>
+        <div>
+          <pre>
+            First Name: {{order.firstName}}
+            Last Name: {{order.lastName}}
+          </pre>
+        </div>
       </div>
 
     </div>
@@ -39,6 +52,10 @@ export default {
   data() {
     return {
       showProduct: true,
+      order: {
+        firstName: '',
+        lastName: ''
+      },
       product: {
         id: 1,
         title: "Product 1",
@@ -81,6 +98,8 @@ export default {
   width: 25%;
   min-width: 200px;
   text-align: left;
+  padding: 20px;
+  background-color: #eee;
   figure {
     margin: 0;
   }
