@@ -26,20 +26,56 @@
       </div>
 
       <div v-else>
-        <div>
-          <p>First Name</p>
-          <input type="text" v-model="order.firstName">
-        </div>
-        <div>
-          <p>Last Name</p>
-          <input type="text" v-model="order.lastName">
-        </div>
-        <div>
-          <pre>
-            First Name: {{order.firstName}}
-            Last Name: {{order.lastName}}
-          </pre>
-        </div>
+        <p>First Name:</p>
+        <input type="text" v-model="order.firstName">
+
+        <p>Last Name:</p>
+        <input type="text" v-model="order.lastName">
+
+        <p>Address:</p>
+        <input type="text" v-model="order.address">
+
+        <p>City:</p>
+        <input type="text" v-model="order.city">
+
+        <p>State:</p>
+        <select v-model="order.state">
+          <option disabled value=""></option>
+          <option>AL</option>
+          <option>AR</option>
+          <option>CA</option>
+          <option>NV</option>
+        </select>
+
+        <p>Zip / Postal Code:</p>
+        <input type="text" v-model="order.zip">
+        <br>
+
+        <input type="checkbox" id="gift" 
+          value="true" v-model="order.gift">
+        <label for="gift">Ship as gift?</label>
+        <br>
+
+        <input type="radio" id="home" 
+          value="Home" v-model="order.method">
+        <input type="radio" id="business" 
+          value="Business" v-model="order.method">
+        <label for="business">Business</label>
+        <br>
+
+        <button type="submit" 
+          v-on:click="submitForm">Place Order</button>
+
+        <pre>
+          First Name: {{order.firstName}}
+          Last Name: {{order.lastName}}
+          Address: {{order.address}}
+          City: {{order.city}}
+          State: {{order.state}}
+          Zip: {{order.zip}}
+          Gift: {{order.gift}}
+          Method: {{order.method}}
+        </pre>
       </div>
 
     </div>
@@ -55,7 +91,13 @@ export default {
       showProduct: true,
       order: {
         firstName: '',
-        lastName: ''
+        lastName: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        gift: false,
+        method: 'Home'
       },
       product: {
         id: 1,
@@ -81,6 +123,9 @@ export default {
     },
     showCheckout() {
       this.showProduct = this.showProduct ? false : true;
+    },
+    submitForm() {
+      alert('Submitted');
     }
   },
   computed: {
