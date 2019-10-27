@@ -49,6 +49,7 @@
 
 <script>
 export default {
+  name: 'store',
   data() {
     return {
       showProduct: true,
