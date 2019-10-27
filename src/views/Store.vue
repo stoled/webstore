@@ -2,7 +2,7 @@
   <div class="home">
     <div>
       <button type="button" v-on:click="showCheckout">
-        <span>Cart: {{ cartItemCount }}</span>
+        <span>Cart {{ cartItemCount }}</span>
       </button>
     </div>
 
@@ -25,41 +25,46 @@
         </div>
       </div>
 
-      <div v-else>
-        <p>First Name:</p>
-        <input type="text" v-model="order.firstName">
+      <div class="cart" v-else>
+        <input type="text" v-model="order.firstName"
+          placeholder="First Name">
 
-        <p>Last Name:</p>
-        <input type="text" v-model="order.lastName">
+        <input type="text" v-model="order.lastName"
+          placeholder="Last Name">
+        <br>
 
-        <p>Address:</p>
-        <input type="text" v-model="order.address">
+        <input type="text" v-model="order.address"
+        placeholder="Address">
 
-        <p>City:</p>
-        <input type="text" v-model="order.city">
+        <input type="text" v-model="order.city"
+        placeholder="City">
+        <br>
 
-        <p>State:</p>
         <select v-model="order.state">
-          <option disabled value=""></option>
-          <option>AL</option>
-          <option>AR</option>
-          <option>CA</option>
-          <option>NV</option>
+          <option disabled value="">State</option>
+          <option v-for="(state, key) in states"
+            v-bind:value="state">
+            {{key}}
+          </option>
         </select>
 
-        <p>Zip / Postal Code:</p>
-        <input type="text" v-model="order.zip">
+        <input type="text" v-model="order.zip"
+        placeholder="Zip / Postal Code">
         <br>
 
         <input type="checkbox" id="gift" 
-          value="true" v-model="order.gift">
+          value="true" v-model="order.gift"
+          v-bind:true-value="order.sendGift"
+          v-bind:false-value="order.dontSendGift">
         <label for="gift">Ship as gift?</label>
-        <br>
 
         <input type="radio" id="home" 
-          value="Home" v-model="order.method">
+          v-bind:value="order.home" 
+          v-model="order.method">
+        <label for="home">Home</label>
         <input type="radio" id="business" 
-          value="Business" v-model="order.method">
+          v-bind:value="order.business" 
+          v-model="order.method">
         <label for="business">Business</label>
         <br>
 
@@ -89,6 +94,12 @@ export default {
   data() {
     return {
       showProduct: true,
+      states: {
+        AL: 'Alabama',
+        AR: 'Arizona',
+        CA: 'California',
+        NV: 'Nevada'
+      },
       order: {
         firstName: '',
         lastName: '',
@@ -96,8 +107,12 @@ export default {
         city: '',
         state: '',
         zip: '',
-        gift: false,
-        method: 'Home'
+        method: 'Home address',
+        business: 'Business address',
+        home: 'Home address',
+        gift: 'Send as a gift',
+        sendGift: 'Send as a gift',
+        dontSendGift: 'Do not send as a gift'
       },
       product: {
         id: 1,
@@ -151,6 +166,11 @@ export default {
   }
   img {
     width: 100%;
+  }
+}
+.cart {
+  input, select, button {
+    margin: 10px;
   }
 }
 </style>
