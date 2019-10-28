@@ -22,8 +22,14 @@
           <button v-else>
             Nope
           </button>
-          <span v-if="product.availableInventory - cartItemCount < 5">
+          <span v-if="product.availableInventory - cartItemCount === 0">
+            All out!
+          </span>
+          <span v-else-if="product.availableInventory - cartItemCount < 5">
             Only {{product.availableInventory - cartItemCount}} left!
+          </span>
+          <span v-else>
+            Buy now!
           </span>
         </div>
       </div>
