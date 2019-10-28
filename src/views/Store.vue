@@ -22,6 +22,9 @@
           <button v-else>
             Nope
           </button>
+          <span v-if="product.availableInventory - cartItemCount < 5">
+            Only {{product.availableInventory - cartItemCount}} left!
+          </span>
         </div>
       </div>
 
@@ -122,7 +125,7 @@ export default {
         price: 99.99,
         // image: "./images/product-1.png"
         image: require("@/assets/images/product-1.png"),
-        availableInventory: 5
+        availableInventory: 10
       },
       cart: []
     };
