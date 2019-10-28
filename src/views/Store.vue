@@ -31,6 +31,11 @@
           <span v-else>
             Buy now!
           </span>
+          <div class="rating">
+            <span v-for="n in 5"
+              v-bind:class="{'rating-active': checkRating(n)}">
+              &#9733;</span>
+          </div>
         </div>
       </div>
 
@@ -131,7 +136,8 @@ export default {
         price: 99.99,
         // image: "./images/product-1.png"
         image: require("@/assets/images/product-1.png"),
-        availableInventory: 10
+        availableInventory: 10,
+        rating: 3
       },
       cart: []
     };
@@ -142,6 +148,9 @@ export default {
     }
   },
   methods: {
+    checkRating(n) {
+      return this.product.rating - n >= 0;
+    },
     addToCart: function() {
       this.cart.push( this.product.id );
     },
@@ -169,12 +178,18 @@ export default {
   min-width: 200px;
   text-align: left;
   padding: 20px;
-  background-color: #eee;
+  background-color: whitesmoke;
   figure {
     margin: 0;
   }
   img {
     width: 100%;
+  }
+  .rating {
+    color: #bbb;
+  }
+  .rating-active {
+    color: #42b983;
   }
 }
 .cart {
