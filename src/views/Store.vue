@@ -8,33 +8,35 @@
 
     <div>
 
-      <div class="product" v-if="showProduct">
-        <figure class="image">
-          <img v-bind:src="product.image">
-        </figure>
-        <div>
-          <h2 v-text="product.title"></h2>
-          <p v-html="product.description"></p>
-          <p>{{ product.price | formatPrice }}</p>
-          <button v-on:click="addToCart" v-if="canAddToCart">
-            Add
-          </button>
-          <button v-else>
-            Nope
-          </button>
-          <span v-if="product.availableInventory - cartItemCount === 0">
-            All out!
-          </span>
-          <span v-else-if="product.availableInventory - cartItemCount < 5">
-            Only {{product.availableInventory - cartItemCount}} left!
-          </span>
-          <span v-else>
-            Buy now!
-          </span>
-          <div class="rating">
-            <span v-for="n in 5"
-              v-bind:class="{'rating-active': checkRating(n)}">
-              &#9733;</span>
+      <div v-if="showProduct">
+        <div class="product" v-for="product in products">
+          <figure class="image">
+            <img v-bind:src="product.image">
+          </figure>
+          <div>
+            <h2 v-text="product.title"></h2>
+            <p v-html="product.description"></p>
+            <p>{{ product.price | formatPrice }}</p>
+            <button v-on:click="addToCart(product)" v-if="canAddToCart(product)">
+              Add
+            </button>
+            <button v-else>
+              Nope
+            </button>
+            <span v-if="product.availableInventory - cartCount(product.id) === 0">
+              All out!
+            </span>
+            <span v-else-if="product.availableInventory - cartCount(product.id) < 5">
+              Only {{product.availableInventory - cartCount(product.id)}} left!
+            </span>
+            <span v-else>
+              Buy now!
+            </span>
+            <div class="rating">
+              <span v-for="n in 5"
+                v-bind:class="{'rating-active': checkRating(n, product)}">
+                &#9733;</span>
+            </div>
           </div>
         </div>
       </div>
@@ -128,17 +130,41 @@ export default {
         sendGift: 'Send as a gift',
         dontSendGift: 'Do not send as a gift'
       },
-      product: {
-        id: 1,
-        title: "Product 1",
-        description:
-          "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
-        price: 99.99,
-        // image: "./images/product-1.png"
-        image: require("@/assets/images/product-1.png"),
-        availableInventory: 10,
-        rating: 3
-      },
+      // product: {
+      //   id: 1,
+      //   title: "Product 1",
+      //   description:
+      //     "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+      //   price: 99.99,
+      //   // image: "./images/product-1.png"
+      //   image: require("@/assets/images/product-1.png"),
+      //   availableInventory: 10,
+      //   rating: 3
+      // },
+      products: [
+        {
+          id: 1,
+          title: "Product 1",
+          description:
+            "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+          price: 19.99,
+          // image: "./images/product-1.png"
+          image: require("@/assets/images/product-1.png"),
+          availableInventory: 10,
+          rating: 1
+        },
+        {
+          id: 2,
+          title: "Product 1",
+          description:
+            "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+          price: 29.99,
+          // image: "./images/product-2.png"
+          image: require("@/assets/images/product-2.png"),
+          availableInventory: 10,
+          rating: 2
+        },
+      ],
       cart: []
     };
   },
@@ -148,25 +174,34 @@ export default {
     }
   },
   methods: {
-    checkRating(n) {
-      return this.product.rating - n >= 0;
+    checkRating(n, myProduct) {
+      return myProduct.rating - n >= 0;
     },
-    addToCart: function() {
-      this.cart.push( this.product.id );
+    addToCart(aProduct) {
+      this.cart.push( aProduct.id );
     },
     showCheckout() {
       this.showProduct = this.showProduct ? false : true;
     },
     submitForm() {
       alert('Submitted');
+    },
+    canAddToCart(aProduct) {
+      return aProduct.availableInventory > this.cartCount(aProduct.id);
+    },
+    cartCount(id) {
+      let count = 0;
+      for(var i = 0; i < this.cart.length; i++) {
+        if (this.cart[i] === id) {
+          count++
+        }
+      }
+      return count;
     }
   },
   computed: {
     cartItemCount: function() {
       return this.cart.length || '';
-    },
-    canAddToCart: function() {
-      return this.product.availableInventory > this.cartItemCount;
     }
   }
 };
