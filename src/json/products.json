@@ -1,0 +1,22 @@
+{
+  "0": {
+      "id": 1001,
+      "title": "Product 1",
+      "description":
+        "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+      "price": 19.99,
+      "image": "./images/product-1.png",
+      "availableInventory": 10,
+      "rating": 1
+    },
+  "1": {
+      "id": 1002,
+      "title": "Product 1",
+      "description":
+        "<em>Lorem ipsum</em> dolor sit amet consectetur adipisicing elit.",
+      "price": 29.99,
+      "image": "./images/product-2.png",
+      "availableInventory": 10,
+      "rating": 2
+  }
+}

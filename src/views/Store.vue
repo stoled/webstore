@@ -105,10 +105,12 @@
 </template>
 
 <script>
+import productsJson from '@/json/products.json'
 export default {
   name: 'store',
   data() {
     return {
+      products: productsJson,
       showProduct: true,
       states: {
         AL: 'Alabama',
@@ -141,30 +143,6 @@ export default {
       //   availableInventory: 10,
       //   rating: 3
       // },
-      products: [
-        {
-          id: 1,
-          title: "Product 1",
-          description:
-            "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
-          price: 19.99,
-          // image: "./images/product-1.png"
-          image: require("@/assets/images/product-1.png"),
-          availableInventory: 10,
-          rating: 1
-        },
-        {
-          id: 2,
-          title: "Product 1",
-          description:
-            "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
-          price: 29.99,
-          // image: "./images/product-2.png"
-          image: require("@/assets/images/product-2.png"),
-          availableInventory: 10,
-          rating: 2
-        },
-      ],
       cart: []
     };
   },
