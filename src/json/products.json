@@ -1,42 +1,44 @@
-[
-  {
-      "id": 1001,
-      "title": "Product 1",
+{
+  "products":[
+    {
+        "id": 1,
+        "title": "Product 1",
+        "description":
+          "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
+        "price": 19.99,
+        "image": "./images/product-1.png",
+        "availableInventory": 10,
+        "rating": 1
+      },
+    {
+        "id": 2,
+        "title": "Product 2",
+        "description":
+          "<em>Lorem ipsum</em> dolor sit amet consectetur adipisicing elit.",
+        "price": 29.99,
+        "image": "./images/product-2.png",
+        "availableInventory": 10,
+        "rating": 2
+    },
+    {
+      "id": 3,
+      "title": "Product 3",
       "description":
         "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
-      "price": 19.99,
-      "image": "./images/product-1.png",
+      "price": 39.99,
+      "image": "./images/product-3.png",
       "availableInventory": 10,
-      "rating": 1
+      "rating": 3
     },
-  {
-      "id": 1002,
-      "title": "Product 1",
+    {
+      "id": 4,
+      "title": "Product 4",
       "description":
         "<em>Lorem ipsum</em> dolor sit amet consectetur adipisicing elit.",
-      "price": 29.99,
-      "image": "./images/product-2.png",
+      "price": 49.99,
+      "image": "./images/product-4.png",
       "availableInventory": 10,
-      "rating": 2
-  },
-  {
-    "id": 1003,
-    "title": "Product 3",
-    "description":
-      "<b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit.",
-    "price": 39.99,
-    "image": "./images/product-3.png",
-    "availableInventory": 10,
-    "rating": 3
-  },
-  {
-    "id": 1004,
-    "title": "Product 4",
-    "description":
-      "<em>Lorem ipsum</em> dolor sit amet consectetur adipisicing elit.",
-    "price": 49.99,
-    "image": "./images/product-4.png",
-    "availableInventory": 10,
-    "rating": 4
-  }
-]
+      "rating": 4
+    }
+  ]
+}

@@ -98,6 +98,7 @@
           Method: {{order.method}}
         </pre>
       </div>
+              {{products}}
 
     </div>
 
@@ -110,7 +111,7 @@ export default {
   name: 'store',
   data() {
     return {
-      products: productsJson,
+      products: productsJson[Object.keys(productsJson)[0]],
       showProduct: true,
       states: {
         AL: 'Alabama',
@@ -189,6 +190,7 @@ export default {
 .product {
   text-align: left;
   padding: 20px;
+  margin: 20px 0;
   background-color: whitesmoke;
   .image {
     margin: 10px;
