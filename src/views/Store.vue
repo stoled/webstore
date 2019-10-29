@@ -13,7 +13,7 @@
           <figure class="image">
             <img v-bind:src="product.image">
           </figure>
-          <div>
+          <div class="description">
             <h2 v-text="product.title"></h2>
             <p v-html="product.description"></p>
             <p>{{ product.price | formatPrice }}</p>
@@ -187,16 +187,22 @@ export default {
 
 <style lang="scss">
 .product {
-  width: 25%;
-  min-width: 200px;
   text-align: left;
   padding: 20px;
   background-color: whitesmoke;
-  figure {
-    margin: 0;
+  .image {
+    margin: 10px;
+    display: inline-block;
+    width: 25%;
+    min-width: 200px;
   }
   img {
     width: 100%;
+  }
+  .description {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
   }
   .rating {
     color: #bbb;
